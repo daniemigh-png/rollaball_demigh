@@ -6,6 +6,7 @@ public class player_conroller_script : MonoBehaviour
     private Rigidbody rb;
     private float movementX;
     private float movementY;
+    public float speed = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
