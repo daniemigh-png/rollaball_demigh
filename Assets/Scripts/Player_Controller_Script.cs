@@ -5,17 +5,25 @@ using TMPro;
 public class player_conroller_script : MonoBehaviour
 {
     private Rigidbody rb;
+
+    private int count;
+
     private float movementX;
     private float movementY;
     public float speed = 0;
 public TextMeshProUGUI countText; 
-private int count; 
+public GameObject winTextObject;
+ 
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start( count = 0; )
+    void Start( )
+    
     {
+        SetCountText();
         rb = GetComponent<Rigidbody>();
+        count = 0;
+        winTextObject.SetActive(false);
 
     }
     
@@ -23,9 +31,12 @@ private int count;
     {
      if (other.gameObject.CompareTag("PickUp"))
     {
+        SetCountText (); 
          other.gameObject.SetActive(false);
+         count = count +1;
+
     }
-    count = count +1; 
+     
     }
 private void FixedUpdate()
     {
@@ -42,6 +53,28 @@ private void FixedUpdate()
 
     void SetCountText ()
     {
-        countText.text = "Count" + count.ToString();
+        countText.text = " Count " + count.ToString(); 
+
+        if (count >= 7) 
+       {
+
+        winTextObject.SetActive(true);
+
+         Destroy(GameObject.FindGameObjectWithTag("Enemy")); 
+       }
+
+        
     }
+
+    private void OnCollisionEnter(Collision collision)
+{
+   if (collision.gameObject.CompareTag("Enemy"))
+   {
+       // Destroy the current object
+       Destroy(gameObject); 
+       // Update the winText to display "You Lose!"
+       winTextObject.gameObject.SetActive(true);
+       winTextObject.GetComponent<TextMeshProUGUI>().text = "You Lose!";
+   }
+}
 }
