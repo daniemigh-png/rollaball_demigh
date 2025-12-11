@@ -41,7 +41,7 @@ public GameObject winTextObject;
 private void FixedUpdate()
     {
         Vector3 movement = new Vector3(movementX, 0.0f, movementY); 
-        rb.AddForce (movement);
+        rb.AddForce ((movement *speed));
     } 
     // Update is called once per frame
     void OnMove(InputValue movementValue)

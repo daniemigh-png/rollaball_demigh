@@ -307,7 +307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1824016b9050b4c48ad6a4e85e5c96ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::player_conroller_script
-  speed: 3
+  speed: 10
   countText: {fileID: 304606327}
   winTextObject: {fileID: 1396064811}
 --- !u!4 &140350071 stripped
